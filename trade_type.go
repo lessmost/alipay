@@ -20,7 +20,7 @@ type Trade struct {
 	DisablePayChannels string          `json:"disable_pay_channels,omitempty"` // 禁用渠道，用户不可用指定渠道支付 当有多个渠道时用“,”分隔 注，与enable_pay_channels互斥
 	EnablePayChannels  string          `json:"enable_pay_channels,omitempty"`  // 可用渠道，用户只能在指定渠道范围内支付  当有多个渠道时用“,”分隔 注，与disable_pay_channels互斥
 	SpecifiedChannel   string          `json:"specified_channel,omitempty"`    // 指定渠道，目前仅支持传入pcredit  若由于用户原因渠道不可用，用户可选择是否用其他渠道支付。  注：该参数不可与花呗分期参数同时传入
-	//ExtUserInfo        string `json:"ext_user_info,omitempty"`        // 外部指定买家
+	// ExtUserInfo        string `json:"ext_user_info,omitempty"`        // 外部指定买家
 	ExtendParams        *ExtendParams `json:"extend_params,omitempty"`         // 可选 业务扩展参数，详见下面的“业务扩展参数说明”
 	AgreementSignParams *SignParams   `json:"agreement_sign_params,omitempty"` // 签约参数。如果希望在sdk中支付并签约，需要在这里传入签约信息。 周期扣款场景 product_code 为 CYCLE_PAY_AUTH 时必填。
 	GoodsType           string        `json:"goods_type,omitempty"`            // 商品主类型：0—虚拟类商品，1—实物类商品 注：虚拟类商品不支持使用花呗渠道
@@ -86,7 +86,7 @@ func (t TradePagePay) APIName() string {
 }
 
 func (t TradePagePay) Params() map[string]string {
-	var m = make(map[string]string)
+	m := make(map[string]string)
 	m["app_auth_token"] = t.AppAuthToken
 	m["notify_url"] = t.NotifyURL
 	m["return_url"] = t.ReturnURL
@@ -117,7 +117,7 @@ func (t TradeQuery) APIName() string {
 }
 
 func (t TradeQuery) Params() map[string]string {
-	var m = make(map[string]string)
+	m := make(map[string]string)
 	m["app_auth_token"] = t.AppAuthToken
 	return m
 }
@@ -246,7 +246,7 @@ func (t TradeClose) APIName() string {
 }
 
 func (t TradeClose) Params() map[string]string {
-	var m = make(map[string]string)
+	m := make(map[string]string)
 	m["app_auth_token"] = t.AppAuthToken
 	m["notify_url"] = t.NotifyURL
 	return m
@@ -280,7 +280,7 @@ func (t TradeRefund) APIName() string {
 }
 
 func (t TradeRefund) Params() map[string]string {
-	var m = make(map[string]string)
+	m := make(map[string]string)
 	m["app_auth_token"] = t.AppAuthToken
 	return m
 }
@@ -347,7 +347,7 @@ func (t TradeFastPayRefundQuery) APIName() string {
 }
 
 func (t TradeFastPayRefundQuery) Params() map[string]string {
-	var m = make(map[string]string)
+	m := make(map[string]string)
 	m["app_auth_token"] = t.AppAuthToken
 	return m
 }
@@ -395,7 +395,7 @@ type TradeOrderSettle struct {
 	OutRequestNo      string              `json:"out_request_no"`     // 必须 结算请求流水号 开发者自行生成并保证唯一性
 	TradeNo           string              `json:"trade_no"`           // 必须 支付宝订单号
 	RoyaltyParameters []*RoyaltyParameter `json:"royalty_parameters"` // 必须 分账明细信息
-	OperatorId        string              `json:"operator_id"`        //可选 操作员id
+	OperatorId        string              `json:"operator_id"`        // 可选 操作员id
 }
 
 func (t TradeOrderSettle) APIName() string {
@@ -403,7 +403,7 @@ func (t TradeOrderSettle) APIName() string {
 }
 
 func (t TradeOrderSettle) Params() map[string]string {
-	var m = make(map[string]string)
+	m := make(map[string]string)
 	m["app_auth_token"] = t.AppAuthToken
 	return m
 }
@@ -439,7 +439,7 @@ func (t TradeCreate) APIName() string {
 }
 
 func (t TradeCreate) Params() map[string]string {
-	var m = make(map[string]string)
+	m := make(map[string]string)
 	m["app_auth_token"] = t.AppAuthToken
 	m["notify_url"] = t.NotifyURL
 	return m
@@ -516,7 +516,7 @@ func (t TradePay) APIName() string {
 }
 
 func (t TradePay) Params() map[string]string {
-	var m = make(map[string]string)
+	m := make(map[string]string)
 	m["app_auth_token"] = t.AppAuthToken
 	m["notify_url"] = t.NotifyURL
 	return m
@@ -552,7 +552,7 @@ func (t TradeAppPay) APIName() string {
 }
 
 func (t TradeAppPay) Params() map[string]string {
-	var m = make(map[string]string)
+	m := make(map[string]string)
 	m["app_auth_token"] = t.AppAuthToken
 	m["notify_url"] = t.NotifyURL
 	return m
@@ -576,7 +576,7 @@ func (t TradePreCreate) APIName() string {
 }
 
 func (t TradePreCreate) Params() map[string]string {
-	var m = make(map[string]string)
+	m := make(map[string]string)
 	m["app_auth_token"] = t.AppAuthToken
 	m["notify_url"] = t.NotifyURL
 	return m
@@ -604,7 +604,7 @@ func (t TradeCancel) APIName() string {
 }
 
 func (t TradeCancel) Params() map[string]string {
-	var m = make(map[string]string)
+	m := make(map[string]string)
 	m["app_auth_token"] = t.AppAuthToken
 	m["notify_url"] = t.NotifyURL
 	return m
@@ -634,7 +634,7 @@ func (t TradeOrderInfoSync) APIName() string {
 }
 
 func (t TradeOrderInfoSync) Params() map[string]string {
-	var m = make(map[string]string)
+	m := make(map[string]string)
 	m["app_auth_token"] = t.AppAuthToken
 	return m
 }
@@ -664,7 +664,7 @@ func (t TradeMergePreCreate) APIName() string {
 }
 
 func (t TradeMergePreCreate) Params() map[string]string {
-	var m = make(map[string]string)
+	m := make(map[string]string)
 	m["app_auth_token"] = t.AppAuthToken
 	m["notify_url"] = t.NotifyURL
 	return m
@@ -688,13 +688,14 @@ type OrderDetail struct {
 }
 
 type ExtendParams struct {
-	SysServiceProviderId string `json:"sys_service_provider_id"` // 可选 系统商编号 该参数作为系统商返佣数据提取的依据，请填写系统商签约协议的PID
-	HBFQNum              string `json:"hb_fq_num"`               // 可选 使用花呗分期要进行的分期数
-	HBFQSellerPercent    string `json:"hb_fq_seller_percent"`    // 可选 使用花呗分期需要卖家承担的手续费比例的百分值，传入100代表100%
-	IndustryRefluxInfo   string `json:"industry_reflux_info"`    // 可选 行业数据回流信息, 详见：地铁支付接口参数补充说明
-	CardType             string `json:"card_type"`               // 可选 卡类型
-	SpecifiedSellerName  string `json:"specified_seller_name"`   // 可选 特殊场景下，允许商户指定交易展示的卖家名称
-	OrigTotalAmount      string `json:"orig_total_amount"`       // 可选 外部订单金额。
+	SysServiceProviderId  string `json:"sys_service_provider_id"`  // 可选 系统商编号 该参数作为系统商返佣数据提取的依据，请填写系统商签约协议的PID
+	HBFQNum               string `json:"hb_fq_num"`                // 可选 使用花呗分期要进行的分期数
+	HBFQSellerPercent     string `json:"hb_fq_seller_percent"`     // 可选 使用花呗分期需要卖家承担的手续费比例的百分值，传入100代表100%
+	IndustryRefluxInfo    string `json:"industry_reflux_info"`     // 可选 行业数据回流信息, 详见：地铁支付接口参数补充说明
+	CardType              string `json:"card_type"`                // 可选 卡类型
+	SpecifiedSellerName   string `json:"specified_seller_name"`    // 可选 特殊场景下，允许商户指定交易展示的卖家名称
+	OrigTotalAmount       string `json:"orig_total_amount"`        // 可选 外部订单金额。
+	TradeComponentOrderId string `json:"trade_component_order_id"` // 可选 公域商品交易业务订单ID
 }
 
 type Merchant struct {
@@ -743,7 +744,7 @@ func (t TradeAppMergePay) APIName() string {
 }
 
 func (t TradeAppMergePay) Params() map[string]string {
-	var m = make(map[string]string)
+	m := make(map[string]string)
 	m["app_auth_token"] = t.AppAuthToken
 	return m
 }
